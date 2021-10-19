@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Saas</title>
+    <title>Pay1</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://js.stripe.com/v3/"></script>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -15,6 +15,26 @@
     <p class="alert"><%= alert %></p>
     <br/>
     <%= link_to "Posts", posts_path%>
+    <%= link_to "Pricing", pricing_path%>
+    <%=link_to  "Details", details_path%> 
+    <% if current_user %>
+      <%= link_to "Billing Portal", billing_portal_create_path, method: :post%>
+      <%= link_to current_user.email, edit_user_registration_path %>
+      <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+      <br/>
+      Stripe Customer Id :
+      <%= current_user.stripe_customer_id %>
+      <br/>
+      Plan:
+      <%= current_user.plan %>
+      <br/>
+      Subscription status
+      <%= current_user.subscription_status %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path %>
+      <%= link_to "Register", new_user_registration_path %>
+    <% end %>
+    <hr>
     <%= yield %>
   </body>
 </html>

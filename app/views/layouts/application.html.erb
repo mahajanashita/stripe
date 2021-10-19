@@ -11,6 +11,10 @@
   </head>
 
   <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <br/>
+    <%= link_to "Posts", posts_path%>
     <%= yield %>
   </body>
 </html>

@@ -1,5 +1,5 @@
 <h1> Pricing </h1>
-<% @pricing = Stripe::Price.list(lookup_keys: ["good_year", "good_month"],expand: ["data.product"]) %>
+<% @pricing = Stripe::Price.list(lookup_keys: ["good_year", "good_month","silver_month"],expand: ["data.product"]) %>
 <% @pricing.each do |price| %>
 <br/>
 <%= price.product.name %>

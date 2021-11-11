@@ -6,8 +6,9 @@ class CheckoutController < ApplicationController
              success_url: posts_url,
              cancel_url: pricing_url,
              #added locale for the languaage 
-             locale: 'fr',
+             locale: 'auto',
              payment_method_types: ['card'],
+             
              line_items: [
                 {price: params[:price], quantity: 1},
              ],
